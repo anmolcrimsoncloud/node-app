@@ -3,6 +3,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - pip install --upgrade awscli==1.18.17
       - aws --version
       - echo $AWS_ACCOUNT_ID
       - echo $AWS_DEFAULT_REGION
