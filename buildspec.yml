@@ -3,9 +3,9 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - pip install --upgrade awscli==1.18.17
+      #- pip install --upgrade awscli==1.18.17
       - aws --version
-      - echo $AWS_ACCOUNT_ID
+      - AWS_ACCOUNT_ID=847231302337
       - echo $AWS_DEFAULT_REGION
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=public.ecr.aws/p7r4k7w6/myrepo
@@ -21,9 +21,9 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      #- docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REPOSITORY_URI:$IMAGE_TAG
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REPOSITORY_URI:$IMAGE_TAG
+  #    - docker push $REPOSITORY_URI:latest
+  #    - docker push $REPOSITORY_URI:$IMAGE_TAG
      # echo Writing image definitions file...
     # - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
    #   - cat imagedefinitions.json 
