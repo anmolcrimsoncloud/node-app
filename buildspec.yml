@@ -4,6 +4,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
+      - echo $AWS_ACCOUNT_ID
       - echo $AWS_DEFAULT_REGION
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=public.ecr.aws/p7r4k7w6/myrepo
