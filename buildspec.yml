@@ -8,7 +8,7 @@ phases:
       - AWS_ACCOUNT_ID=847231302337
       - echo $AWS_DEFAULT_REGION
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=public.ecr.aws/p7r4k7w6/myrepo
+      - REPOSITORY_URI=847231302337.dkr.ecr.ap-south-1.amazonaws.com/myapp
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
